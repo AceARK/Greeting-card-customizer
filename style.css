@@ -44,7 +44,7 @@ h1 {
 }  
 
 .recipient {
-    padding-top: 30px;
+    padding-top: 20px;
     padding-left: 25px;
      min-height: 80px;
      color: #084912;
@@ -55,8 +55,9 @@ h1 {
     max-height: 300px;
     max-width: 500px;
     margin-left: 100px;
-    margin-top: 40px;
+    margin-top: 35px;
     color: #a00000;
+    word-wrap: break-word;
 }
 
 .sender {
@@ -123,4 +124,58 @@ button {
     bottom: 45%;
     width: 150px;
     background-color: #084912;
+}
+
+
+/* media query to specify what to print */
+@media print {
+   h1 {
+      display: none;
+   }
+
+   button, .mailAndPrint {
+      display: none;
+   }
+
+   body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+   }
+
+   @page {
+      margin: 2cm;
+   }
+
+   .flip {
+       page-break-after: avoid;
+    }
+
+    .front{
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform-style: initial;
+        /*transform: rotateX(0);*/
+
+    }
+
+    .back {
+        max-width: 700px;
+        max-height: 400px;
+        background-image: url(backbg.jpg);
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform-style: initial;
+        /*transform: rotateX(-360deg);*/
+    }
+}
+
+@media print and (color) {
+   .back {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+   }
 }
